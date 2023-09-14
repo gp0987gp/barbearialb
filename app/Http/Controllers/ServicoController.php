@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ServicoFormRequest;
+use App\Http\Requests\UpdateFormRequest;
 use App\Models\Servico;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class ServicoController extends Controller
         ]);
         return response()->json([
             "sucess" => true,
-            "message" => "Registered User",
+            "message" => "Registered Serviço",
             "data"=> $barbearialb
         ], 200);
     }
@@ -47,25 +48,25 @@ class ServicoController extends Controller
         if (!isset($barbearialb)) {
             return response()->json([
                 'status' => false,
-                'message' => "Usuário não encontrado"
+                'message' => "Serviço não encontrado"
             ]);
         }
 
         $barbearialb->delete();
         return response()->json([
             'status' => true,
-            'message' => "Usuário excluído com sucesso"
+            'message' => "Serviço excluído com sucesso"
         ]);
     }
 
 
-    public function update(Request $request)
+    public function update(UpdateFormRequest $request)
     {
         $barbearialb = Servico::find($request->id);
         if(!isset($barbearialb)){
         return response()->json([
             'status' => false,
-            'message' => 'Usuário não encontrado'
+            'message' => 'Serviço não encontrado'
         ]);
     }
 
@@ -91,7 +92,7 @@ class ServicoController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Usuário atualizado'
+            'message' => 'Serviço atualizado'
         ]);
     }
 

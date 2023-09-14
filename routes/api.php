@@ -22,9 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/servico', [ServicoController::class, 'barbearialb']);
 
-Route::get('descricao/{descricao}', [ServicoController::class, 'pesquisarPorDescricao']);
+Route::get('descricao', [ServicoController::class, 'pesquisarPorDescricao']);
 
-Route::post('nome/{nome}', [ServicoController::class, 'pesquisarPorNome']);
+Route::post('nome', [ServicoController::class, 'pesquisarPorNome']);
 
 Route::delete('delete/{id}', [ServicoController::class, 'excluir']);
 
