@@ -69,11 +69,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 1. Clone este repositório para o seu ambiente de desenvolvimento local utilizando o comando:
 ```
- git clone https://github.com/enzojunqueiraa/Drogazin-api.git
+ git clone https://github.com/enzojunqueiraa/barbearialb.git
 ```
 2. Acesse o diretório do projeto:
 ```
-cd Drogazin-api
+cd barbearialb
 ```
 3. Inicializando o Repositorio
 ```
