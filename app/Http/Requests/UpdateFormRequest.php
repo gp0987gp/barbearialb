@@ -40,7 +40,6 @@ class UpdateFormRequest extends FormRequest
     
     public function messages(){
         return [
-
             'nome.max' => 'Nome deve conter no máximo 80 caracteres',
             'nome.unique' => 'Nome já cadastrado no sistema',
             'nome.unique' => 'O campo deve ser conter no mínimo 5 caracteres',
