@@ -16,3 +16,4 @@ class Servico extends Model
         'preco',
     ];  
 }
+

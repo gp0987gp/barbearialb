@@ -18,7 +18,7 @@ class ServicoController extends Controller
         ]);
         return response()->json([
             "sucess" => true,
-            "message" => "Registered Serviço",
+            "message" => "Registro Serviço",
             "data"=> $barbearialb
         ], 200);
     }
@@ -26,10 +26,16 @@ class ServicoController extends Controller
     public function pesquisarPorNome(Request $request)
     {
         $barbearialb = Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
+        if(count($barbearialb) > 0){
         return response()->json([
             'status' => true,
             'data' => $barbearialb
         ]);
+    }
+    return response()->json([
+        'status' => true ,
+        'message' => "Não há resultados na pesquisa"
+    ]);
     }
 
     public function pesquisarPorDescricao(Request $request)
@@ -37,7 +43,7 @@ class ServicoController extends Controller
         $barbearialb = Servico::where('descricao', 'like', '%' . $request->descricao . '%')->get();
         return response()->json([
             'status' => true,
-            'data' => $barbearialb
+            'message' => "Não há resultados para pesquisa"
         ]);
     }
 
@@ -51,7 +57,6 @@ class ServicoController extends Controller
                 'message' => "Serviço não encontrado"
             ]);
         }
-
         $barbearialb->delete();
         return response()->json([
             'status' => true,
@@ -86,8 +91,6 @@ class ServicoController extends Controller
         if (isset($request->preco)) {
             $barbearialb->preco = $request->preco;
         }
-
-
         $barbearialb->update();
 
         return response()->json([
