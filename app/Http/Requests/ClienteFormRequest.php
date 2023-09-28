@@ -21,6 +21,8 @@ class ClienteFormRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
+
+     // Todas as validações dos campos requisitados
     public function rules(): array
     { 
         return [
@@ -48,6 +50,8 @@ class ClienteFormRequest extends FormRequest
         ]));
     }
 
+
+    // Todas as mensagens das validações que serão exibidas caso o campo não seje preenchido de maneira correta
     public function messages(){
         return [
             'nome.required' => 'Nome Obrigatório' ,

@@ -21,6 +21,8 @@ class ClienteUpdateFormRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
+
+     // Validação do update
     public function rules(): array
     {
         return [
@@ -51,7 +53,7 @@ class ClienteUpdateFormRequest extends FormRequest
     }
 
 
-
+    // Mensagens que serão exibidas
     public function messages(){
         return [ 
     

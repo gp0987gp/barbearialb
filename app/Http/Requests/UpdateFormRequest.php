@@ -21,6 +21,8 @@ class UpdateFormRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
+
+     // Validação do update
     public function rules(): array
     {
         return [
@@ -37,7 +39,8 @@ class UpdateFormRequest extends FormRequest
             'error' => $validator->errors()
         ]));
     }
-    
+
+        // Mensagens exibidas do update
     public function messages(){
         return [
             'nome.max' => 'Nome deve conter no máximo 80 caracteres',

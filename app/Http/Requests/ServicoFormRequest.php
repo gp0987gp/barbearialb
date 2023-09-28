@@ -21,6 +21,8 @@ class ServicoFormRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
+
+     // Validações para os campos requisitados
     public function rules(): array
     {
         return [
@@ -37,6 +39,8 @@ class ServicoFormRequest extends FormRequest
             'error' => $validator->errors()
         ]));
     }
+
+        // Mensagens a serem exibidas das validações 
     public function messages(){
         return [
             'nome.required' => 'Nome obrigatório',
