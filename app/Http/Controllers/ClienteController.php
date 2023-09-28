@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
+    // Função de Cadastro de Clientes
     public function cliente(ClienteFormRequest $request)
     {
         $cliente = Cliente::create([
@@ -36,6 +37,8 @@ class ClienteController extends Controller
         ], 200);
     }
 
+
+    // Função de pesquisa por nome
     public function pesquisarPorNome(Request $request)
     {
         $cliente = Cliente::where('nome', 'like', '%' . $request->nome . '%')->get();
@@ -51,6 +54,7 @@ class ClienteController extends Controller
         ]);
     }
 
+    // Função de pesquisa por CPF
     public function pesquisarPorCpf(Request $request)
     {
         $cliente = Cliente::where('CPF', 'like', '%' . $request->cpf . '%')->get();
@@ -66,6 +70,8 @@ class ClienteController extends Controller
             'message' => "Não há resultados na pesquisa"
         ]);
     }
+
+        // Função de pesquisa por Email
     public function pesquisarPorEmail(Request $request)
     {
         $cliente = Cliente::where('email', 'like', '%' . $request->email . '%')->get();
@@ -81,6 +87,8 @@ class ClienteController extends Controller
         ]);
     }
 
+
+            // Função de pesquisa por Celular
     public function pesquisarPorCelular(Request $request)
     {
         $cliente = Cliente::where('celular', 'like', '%' . $request->celular . '%')->get();
@@ -97,6 +105,8 @@ class ClienteController extends Controller
         ]);
     }
 
+
+    // Função de exclusão
     public function excluir($id)
     {
         $cliente = Cliente::find($id);
@@ -114,6 +124,8 @@ class ClienteController extends Controller
         ]);
     }
 
+
+        // Função de retornar todos os clientes cadastrados no banco de dados
     public function retornarTodos()
     {
         $cliente = Cliente::all();
@@ -123,6 +135,7 @@ class ClienteController extends Controller
         ]);
     }
 
+        // Função de dar update nos campos 
     public function update(ClienteUpdateFormRequest $request)
     {
         $cliente = Cliente::find($request->id);

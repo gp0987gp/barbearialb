@@ -7,6 +7,10 @@ use App\Http\Requests\UpdateFormRequest;
 use App\Models\Servico;
 use Illuminate\Http\Request;
 
+
+
+
+// Função de Cadastro dos Serviços
 class ServicoController extends Controller
 {
     public function barbearialb(ServicoFormRequest $request){
@@ -23,6 +27,8 @@ class ServicoController extends Controller
         ], 200);
     }
 
+
+    // Função de pesquisa por Nome
     public function pesquisarPorNome(Request $request)
     {
         $barbearialb = Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
@@ -47,6 +53,8 @@ class ServicoController extends Controller
         ]);
     }
 
+
+    // Função para excluir os serviços
     public function excluir($id)
     {
         $barbearialb = Servico::find($id);
@@ -64,7 +72,7 @@ class ServicoController extends Controller
         ]);
     }
 
-
+    // Função para dar update nos campos
     public function update(UpdateFormRequest $request)
     {
         $barbearialb = Servico::find($request->id);
@@ -99,7 +107,7 @@ class ServicoController extends Controller
         ]);
     }
 
-    
+    // Função parar retornar todos os serviços
     public function retornarTodos()
     {
         $barbearialb = Servico::all();
