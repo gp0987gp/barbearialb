@@ -136,6 +136,7 @@ class ClienteController extends Controller
     }
 
         // Função de dar update nos campos 
+        // A função If Isset é utilizada para chegar se a variável está vazia ou com algum valor determinado
     public function update(ClienteUpdateFormRequest $request)
     {
         $cliente = Cliente::find($request->id);

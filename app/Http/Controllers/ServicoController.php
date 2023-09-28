@@ -73,6 +73,7 @@ class ServicoController extends Controller
     }
 
     // Função para dar update nos campos
+     // A função If Isset é utilizada para chegar se a variável está vazia ou com algum valor determinado
     public function update(UpdateFormRequest $request)
     {
         $barbearialb = Servico::find($request->id);
