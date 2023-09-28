@@ -30,7 +30,7 @@ class ServicoController extends Controller
 
     // Função de pesquisa por Nome
     public function pesquisarPorNome(Request $request)
-    {
+    {   
         $barbearialb = Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
         if(count($barbearialb) > 0){
         return response()->json([
@@ -47,10 +47,12 @@ class ServicoController extends Controller
     public function pesquisarPorDescricao(Request $request)
     {
         $barbearialb = Servico::where('descricao', 'like', '%' . $request->descricao . '%')->get();
+        if(count($barbearialb) > 0){
         return response()->json([
             'status' => true,
             'message' => "Não há resultados para pesquisa"
         ]);
+    }
     }
 
 
