@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+    //Rota para a página Serviço
 Route::post('/servico', [ServicoController::class, 'barbearialb']);
 
 Route::get('descricao', [ServicoController::class, 'pesquisarPorDescricao']);
@@ -35,8 +37,7 @@ Route::put('update', [ServicoController::class, 'update']);
 
 
 
-
-
+    // Rota para a página Cliente
 Route::post('cliente', [ClienteController::class, 'cliente']);
 
 Route::get('celular', [ClienteController::class, 'pesquisarPorCelular']);
@@ -52,3 +53,22 @@ Route::delete('cliente/delete/{id}', [ClienteController::class, 'excluir']);
 Route::get('cliente/all', [ClienteController::class, 'retornarTodos']);
 
 Route::put('cliente/update', [ClienteController::class, 'update']);
+
+
+
+    // Rotas da página Profissional
+Route::post('profissional', [ProfissionalController::class, 'profissional']);
+
+Route::get('profissional/celular', [ProfissionalController::class, 'pesquisarPorCelular']);
+
+Route::get('profissional/nome', [ProfissionalController::class, 'pesquisarPorNome']);
+
+Route::get('profissional/cpf', [ProfissionalController::class, 'pesquisarPorCpf']);
+
+Route::get('profissional/email', [ProfissionalController::class, 'pesquisarPorEmail']);
+
+Route::delete('profissional/delete/{id}', [ProfissionalController::class, 'excluir']);
+
+Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos']);
+
+Route::put('profissional/update', [ProfissionalController::class, 'update']);

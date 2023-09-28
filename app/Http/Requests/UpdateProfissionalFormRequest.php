@@ -6,8 +6,8 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClienteUpdateFormRequest extends FormRequest
-{ 
+class UpdateProfissionalFormRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -16,20 +16,20 @@ class ClienteUpdateFormRequest extends FormRequest
         return true;
     }
 
-    /**s
+    /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-
-     // Validação do update
     public function rules(): array
     {
+        // Validações para o update do profissionais
+        // O this id é o comparativo entre o id do campo(email) dentro da tabela
         return [
             'nome' => 'max:120|min:5',
             'celular' =>'max:11|min:10',
-            'email'=>'max:120|email:rfc||unique:clientes,email,' . $this->id,
-            'cpf'=>'max:11|min:11|unique:clientes,cpf,' . $this->id,
+            'email'=>'max:120|email:rfc||unique:profissionals,email,' . $this->id,
+            'cpf'=>'max:11|min:11|unique:profissionals,cpf,' . $this->id,
             'dataNascimento'=>'',
             'cidade'=>'max:120',
             'estado'=>'max:2|min:2',
@@ -39,11 +39,10 @@ class ClienteUpdateFormRequest extends FormRequest
             'bairro'=>'max:100',
             'cep'=>'max:8|min:8',
             'complemento'=>'max:150',
-            'senha' => ''
+            'senha' => '',
+            'salario' => 'decimal:2'
         ];
     }
-
-
 
     public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
@@ -51,8 +50,6 @@ class ClienteUpdateFormRequest extends FormRequest
             'error' => $validator->errors()
         ]));
     }
-
-
     // Mensagens que serão exibidas
     public function messages(){
         return [ 
@@ -66,7 +63,7 @@ class ClienteUpdateFormRequest extends FormRequest
 
           
             'email.max' => 'Deve conter no maxímo 120 caracteres',
-            'email.email' => 'formato de email inválido',
+            'email.email' => 'Formato de email inválido',
             'email.unique' => 'E-mail já cadastrado no sistema',
            
             'cpf.max' => 'Deve conter no máximo 11 caracteres',
@@ -96,6 +93,8 @@ class ClienteUpdateFormRequest extends FormRequest
             'cep.min' =>'O campo deve conter no mínimo 8 caracteres',
 
             'complemento.max' => 'O campo deve conter no máximo 150 caracteres',
+
+            'salario.decimal' => "Informar valores em reais"
             
         ];
     }
@@ -103,4 +102,8 @@ class ClienteUpdateFormRequest extends FormRequest
 
 
 
+
+    
 }
+
+
